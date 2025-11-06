@@ -123,11 +123,11 @@ class EsetKeygen(object):
         
     def sendRequestForKey(self):
         uCE = untilConditionExecute
-        time.sleep(2)
 
         logging.info(f'[{self.mode}] Request sending...')
         console_log(f'\n[{self.mode}] Request sending...', INFO, silent_mode=SILENT_MODE)
         self.driver.get('https://home.eset.com/subscriptions/choose-trial')
+        time.sleep(2)
         # Return current page document (html)
         print(self.driver.page_source)
         # print('Button HTML : "{}"'.format(
