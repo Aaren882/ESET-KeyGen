@@ -242,11 +242,13 @@ def untilConditionExecute(driver_obj, js: str, delay=DEFAULT_DELAY, max_iter=DEF
     for _ in range(max_iter):
         try:
             result = driver_obj.execute_script(js)
+            print(f'execute_script result : "{result}"')
             if return_js_result and result is not None:
                 return result
             elif result == positive_result:
                 return True
         except Exception as E:
+            print(E)
             pass
         time.sleep(delay)
     if raise_exception_if_failed:
