@@ -136,6 +136,7 @@ class EsetKeygen(object):
                     break
 
                 self.driver.get(target_url)
+                time.sleep(DEFAULT_DELAY)
             except Exception as E:
                 pass
         
