@@ -131,10 +131,11 @@ class EsetKeygen(object):
             try:
                 current_url = self.driver.current_url
                 target_url = 'https://home.eset.com/subscriptions/choose-trial'
-                if current_url != target_url:
-                    self.driver.get(target_url)
-                else:
+                
+                if current_url == target_url:
                     break
+
+                self.driver.get(target_url)
             except Exception as E:
                 pass
         
