@@ -130,7 +130,8 @@ class EsetKeygen(object):
         
         # Return current page document (html)
         print('Button HTML : "{}"'.format(
-                self.driver.execute_script("return document.querySelector(\'[data-label=\"subscription-choose-trial-ehsp-card-button\"]\')")
+                # self.driver.execute_script("return document.querySelector(\'[data-label=\"subscription-choose-trial-ehsp-card-button\"]\')")
+                self.driver.execute_script("return document.getElementById(\'root\')")
             )
         )
         uCE(self.driver, f"return {GET_EBAV}('button', 'data-label', 'subscription-choose-trial-ehsp-card-button') != null")
