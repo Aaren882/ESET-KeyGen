@@ -239,6 +239,8 @@ def untilConditionExecute(driver_obj, js: str, delay=DEFAULT_DELAY, max_iter=DEF
         DEFINE_CLICK_WITH_BOOL_FUNCTION
     ]
     js = '\n'.join(pre_js+[js])
+    print(f'execute_script : "{js}"')
+
     for _ in range(max_iter):
         try:
             result = driver_obj.execute_script(js)
