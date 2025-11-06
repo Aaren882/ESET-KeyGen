@@ -144,8 +144,7 @@ class EsetKeygen(object):
                 pass
         
         if not correctUrl:
-            console_log('Cannot Get choose-trial page !!', ERROR, silent_mode=SILENT_MODE)
-            return
+            raise RuntimeError('Cannot Get choose-trial page !!')
         
         # Return current page document (html)
         print(self.driver.page_source)
