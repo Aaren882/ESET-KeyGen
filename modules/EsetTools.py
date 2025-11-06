@@ -126,8 +126,18 @@ class EsetKeygen(object):
 
         logging.info(f'[{self.mode}] Request sending...')
         console_log(f'\n[{self.mode}] Request sending...', INFO, silent_mode=SILENT_MODE)
-        self.driver.get('https://home.eset.com/subscriptions/choose-trial')
-        time.sleep(2)
+
+        for _ in range(DEFAULT_MAX_ITER):
+            try:
+                current_url = self.driver.current_url
+                target_url = 'https://home.eset.com/subscriptions/choose-trial'
+                if current_url != target_url:
+                    self.driver.get('https://home.eset.com/subscriptions/choose-trial')
+                else:
+                    break
+            except Exception as E:
+                pass
+        
         # Return current page document (html)
         print(self.driver.page_source)
         # print('Button HTML : "{}"'.format(
