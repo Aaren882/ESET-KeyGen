@@ -127,18 +127,25 @@ class EsetKeygen(object):
         logging.info(f'[{self.mode}] Request sending...')
         console_log(f'\n[{self.mode}] Request sending...', INFO, silent_mode=SILENT_MODE)
 
-        for _ in range(DEFAULT_MAX_ITER):
+        correctUrl = False
+        for i in range(DEFAULT_MAX_ITER):
             try:
                 current_url = self.driver.current_url
                 target_url = 'https://home.eset.com/subscriptions/choose-trial'
                 
+                console_log(f'Getting choose-trial page "{i + 1}" time(s)', INFO, silent_mode=SILENT_MODE)
                 if current_url == target_url:
+                    correctUrl = True
                     break
 
                 self.driver.get(target_url)
                 time.sleep(DEFAULT_DELAY)
             except Exception as E:
                 pass
+        
+        if not correctUrl:
+            console_log('Cannot Get choose-trial page !!', ERROR, silent_mode=SILENT_MODE)
+            return
         
         # Return current page document (html)
         print(self.driver.page_source)
