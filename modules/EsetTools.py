@@ -129,7 +129,10 @@ class EsetKeygen(object):
         self.driver.get('https://home.eset.com/subscriptions/choose-trial')
         
         # Return current page document (html)
-        print(f'Button HTML : "{self.driver.execute_script("return document.querySelector(\'[data-label=\"subscription-choose-trial-ehsp-card-button\"]\')")}"')
+        print('Button HTML : "{}"'.format(
+                self.driver.execute_script("return document.querySelector(\'[data-label=\"subscription-choose-trial-ehsp-card-button\"]\')")
+            )
+        )
         uCE(self.driver, f"return {GET_EBAV}('button', 'data-label', 'subscription-choose-trial-ehsp-card-button') != null")
 
         if self.mode == 'ESET HOME':
